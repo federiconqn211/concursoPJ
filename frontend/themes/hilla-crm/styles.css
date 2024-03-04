@@ -1,0 +1,21 @@
+@import "theme-editor.css";
+
+.tarjetaPortal{
+    box-shadow: 2px 2px darkslategray;
+    margin-bottom: 35px;
+}
+
+.tarjetaPortal:hover{
+    box-shadow: 5px 4px darkslategray;
+
+}
+.tarjetaPortal .card-header{
+    box-shadow: 1px 1px gray;
+
+    text-align: center;
+}
+.tarjetaPortal .card-body{
+padding-bottom: 45px;
+    text-align: center;
+    background: linear-gradient(17deg, rgba(2,0,36,1) 0%, rgba(9,71,121,1) 35%, rgba(0,212,255,1) 100%);
+}
