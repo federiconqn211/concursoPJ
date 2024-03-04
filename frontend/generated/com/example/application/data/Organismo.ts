@@ -1,0 +1,8 @@
+interface Organismo {
+    id: number;
+    nombre: string;
+    domicilio: string;
+    telefono: string;
+    email: string;
+}
+export default Organismo;
