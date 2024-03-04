@@ -1,0 +1,2279 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Hilla Application",
+    "version" : "1.0.0"
+  },
+  "servers" : [
+    {
+      "url" : "http://localhost:8080/connect",
+      "description" : "Hilla Backend"
+    }
+  ],
+  "tags" : [
+    {
+      "name" : "AppService",
+      "x-class-name" : "com.example.application.services.AppService"
+    },
+    {
+      "name" : "CRMService",
+      "x-class-name" : "com.example.application.services.CRMService"
+    },
+    {
+      "name" : "OrganismoService",
+      "x-class-name" : "com.example.application.services.OrganismoService"
+    },
+    {
+      "name" : "UsuarioService",
+      "x-class-name" : "com.example.application.services.UsuarioService"
+    }
+  ],
+  "paths" : {
+    "/AppService/count" : {
+      "post" : {
+        "tags" : [
+          "AppService"
+        ],
+        "operationId" : "AppService_count_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "filter" : {
+                    "nullable" : true,
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "integer",
+                  "format" : "int64",
+                  "x-java-type" : "long"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/AppService/exists" : {
+      "post" : {
+        "tags" : [
+          "AppService"
+        ],
+        "operationId" : "AppService_exists_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "boolean",
+                  "x-java-type" : "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/AppService/get" : {
+      "post" : {
+        "tags" : [
+          "AppService"
+        ],
+        "operationId" : "AppService_get_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "nullable" : true,
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.App"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/AppService/list" : {
+      "post" : {
+        "tags" : [
+          "AppService"
+        ],
+        "operationId" : "AppService_list_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "pageable" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/dev.hilla.mappedtypes.Pageable"
+                      }
+                    ]
+                  },
+                  "filter" : {
+                    "nullable" : true,
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.App"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/AppService/delete" : {
+      "post" : {
+        "tags" : [
+          "AppService"
+        ],
+        "operationId" : "AppService_delete_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/AppService/deleteAll" : {
+      "post" : {
+        "tags" : [
+          "AppService"
+        ],
+        "operationId" : "AppService_deleteAll_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "ids" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "integer",
+                      "format" : "int64",
+                      "x-java-type" : "java.lang.Long"
+                    },
+                    "x-java-type" : "java.lang.Iterable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/AppService/save" : {
+      "post" : {
+        "tags" : [
+          "AppService"
+        ],
+        "operationId" : "AppService_save_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "app" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.AppService$AppRecord"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.services.AppService$AppRecord"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/AppService/saveAll" : {
+      "post" : {
+        "tags" : [
+          "AppService"
+        ],
+        "operationId" : "AppService_saveAll_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "values" : {
+                    "type" : "array",
+                    "items" : {
+                      "anyOf" : [
+                        {
+                          "$ref" : "#/components/schemas/com.example.application.data.App"
+                        }
+                      ]
+                    },
+                    "x-java-type" : "java.lang.Iterable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.App"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/AppService/findAllApps" : {
+      "post" : {
+        "tags" : [
+          "AppService"
+        ],
+        "operationId" : "AppService_findAllApps_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.AppService$AppRecord"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CRMService/findAllCompanies" : {
+      "post" : {
+        "tags" : [
+          "CRMService"
+        ],
+        "operationId" : "CRMService_findAllCompanies_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.CRMService$CompanyRecord"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CRMService/findAllContacts" : {
+      "post" : {
+        "tags" : [
+          "CRMService"
+        ],
+        "operationId" : "CRMService_findAllContacts_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.CRMService$ContactRecord"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CRMService/save" : {
+      "post" : {
+        "tags" : [
+          "CRMService"
+        ],
+        "operationId" : "CRMService_save_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "contact" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.CRMService$ContactRecord"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.services.CRMService$ContactRecord"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OrganismoService/count" : {
+      "post" : {
+        "tags" : [
+          "OrganismoService"
+        ],
+        "operationId" : "OrganismoService_count_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "filter" : {
+                    "nullable" : true,
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "integer",
+                  "format" : "int64",
+                  "x-java-type" : "long"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OrganismoService/exists" : {
+      "post" : {
+        "tags" : [
+          "OrganismoService"
+        ],
+        "operationId" : "OrganismoService_exists_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "boolean",
+                  "x-java-type" : "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OrganismoService/get" : {
+      "post" : {
+        "tags" : [
+          "OrganismoService"
+        ],
+        "operationId" : "OrganismoService_get_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "nullable" : true,
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.Organismo"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OrganismoService/list" : {
+      "post" : {
+        "tags" : [
+          "OrganismoService"
+        ],
+        "operationId" : "OrganismoService_list_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "pageable" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/dev.hilla.mappedtypes.Pageable"
+                      }
+                    ]
+                  },
+                  "filter" : {
+                    "nullable" : true,
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.Organismo"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OrganismoService/delete" : {
+      "post" : {
+        "tags" : [
+          "OrganismoService"
+        ],
+        "operationId" : "OrganismoService_delete_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/OrganismoService/deleteAll" : {
+      "post" : {
+        "tags" : [
+          "OrganismoService"
+        ],
+        "operationId" : "OrganismoService_deleteAll_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "ids" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "integer",
+                      "format" : "int64",
+                      "x-java-type" : "java.lang.Long"
+                    },
+                    "x-java-type" : "java.lang.Iterable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/OrganismoService/save" : {
+      "post" : {
+        "tags" : [
+          "OrganismoService"
+        ],
+        "operationId" : "OrganismoService_save_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "value" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.Organismo"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "nullable" : true,
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.Organismo"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OrganismoService/saveAll" : {
+      "post" : {
+        "tags" : [
+          "OrganismoService"
+        ],
+        "operationId" : "OrganismoService_saveAll_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "values" : {
+                    "type" : "array",
+                    "items" : {
+                      "anyOf" : [
+                        {
+                          "$ref" : "#/components/schemas/com.example.application.data.Organismo"
+                        }
+                      ]
+                    },
+                    "x-java-type" : "java.lang.Iterable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.Organismo"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/OrganismoService/findAllOrganismos" : {
+      "post" : {
+        "tags" : [
+          "OrganismoService"
+        ],
+        "operationId" : "OrganismoService_findAllOrganismos_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.OrganismoService$OrganismoRecord"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/count" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_count_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "filter" : {
+                    "nullable" : true,
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "integer",
+                  "format" : "int64",
+                  "x-java-type" : "long"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/exists" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_exists_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "boolean",
+                  "x-java-type" : "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/get" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_get_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "nullable" : true,
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.Usuario"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/list" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_list_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "pageable" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/dev.hilla.mappedtypes.Pageable"
+                      }
+                    ]
+                  },
+                  "filter" : {
+                    "nullable" : true,
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.Usuario"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/delete" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_delete_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/UsuarioService/deleteAll" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_deleteAll_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "ids" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "integer",
+                      "format" : "int64",
+                      "x-java-type" : "java.lang.Long"
+                    },
+                    "x-java-type" : "java.lang.Iterable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/UsuarioService/save" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_save_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "usuario" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.UsuarioService$UsuarioRecord"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.services.UsuarioService$UsuarioRecord"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/saveAll" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_saveAll_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "values" : {
+                    "type" : "array",
+                    "items" : {
+                      "anyOf" : [
+                        {
+                          "$ref" : "#/components/schemas/com.example.application.data.Usuario"
+                        }
+                      ]
+                    },
+                    "x-java-type" : "java.lang.Iterable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.Usuario"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/asignarAppAUsuario" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_asignarAppAUsuario_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "usuarioId" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  },
+                  "ApplId" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/UsuarioService/autenticar" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_autenticar_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "username" : {
+                    "type" : "string",
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "password" : {
+                    "type" : "string",
+                    "x-java-type" : "java.lang.String"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.Usuario"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/borrarPorId" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_borrarPorId_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/UsuarioService/findAllUsuarios" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_findAllUsuarios_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.UsuarioService$UsuarioRecord"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/findAllUsuariossss" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_findAllUsuariossss_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.Usuario"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/generatePDF" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_generatePDF_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "users" : {
+                    "type" : "array",
+                    "items" : {
+                      "anyOf" : [
+                        {
+                          "$ref" : "#/components/schemas/com.example.application.data.Usuario"
+                        }
+                      ]
+                    },
+                    "x-java-type" : "java.util.List"
+                  },
+                  "response" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/jakarta.servlet.http.HttpServletResponse"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/UsuarioService/getAllUsers" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_getAllUsers_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.Usuario"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/getUserAplicacionesPortal" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_getUserAplicacionesPortal_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "username" : {
+                    "type" : "string",
+                    "x-java-type" : "java.lang.String"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.App"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.Set"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/getUserApplications" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_getUserApplications_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "userId" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.App"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.Set"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/getUserNoApplications" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_getUserNoApplications_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "userId" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.App"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.Set"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/getUsuarioApps" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_getUsuarioApps_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "usuarioId" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.data.App"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/obtenerUsuarioYApps" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_obtenerUsuarioYApps_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "usuarioId" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.Usuario"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/UsuarioService/quitarAppAUsuario" : {
+      "post" : {
+        "tags" : [
+          "UsuarioService"
+        ],
+        "operationId" : "UsuarioService_quitarAppAUsuario_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "usuarioId" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  },
+                  "ApplId" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "dev.hilla.crud.filter.Filter" : {
+        "type" : "object"
+      },
+      "dev.hilla.crud.filter.FilterUnion" : {
+        "type" : "object",
+        "oneOf" : [
+          {
+            "$ref" : "#/components/schemas/dev.hilla.crud.filter.OrFilter"
+          },
+          {
+            "$ref" : "#/components/schemas/dev.hilla.crud.filter.AndFilter"
+          },
+          {
+            "$ref" : "#/components/schemas/dev.hilla.crud.filter.PropertyStringFilter"
+          }
+        ]
+      },
+      "dev.hilla.crud.filter.OrFilter" : {
+        "anyOf" : [
+          {
+            "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+          },
+          {
+            "type" : "object",
+            "properties" : {
+              "children" : {
+                "type" : "array",
+                "items" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+                    }
+                  ]
+                },
+                "x-java-type" : "java.util.List"
+              },
+              "@type" : {
+                "type" : "string",
+                "example" : "or"
+              }
+            }
+          }
+        ]
+      },
+      "dev.hilla.crud.filter.AndFilter" : {
+        "anyOf" : [
+          {
+            "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+          },
+          {
+            "type" : "object",
+            "properties" : {
+              "children" : {
+                "type" : "array",
+                "items" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+                    }
+                  ]
+                },
+                "x-java-type" : "java.util.List"
+              },
+              "@type" : {
+                "type" : "string",
+                "example" : "and"
+              }
+            }
+          }
+        ]
+      },
+      "dev.hilla.crud.filter.PropertyStringFilter" : {
+        "anyOf" : [
+          {
+            "$ref" : "#/components/schemas/dev.hilla.crud.filter.Filter"
+          },
+          {
+            "type" : "object",
+            "properties" : {
+              "propertyId" : {
+                "type" : "string",
+                "x-java-type" : "java.lang.String"
+              },
+              "filterValue" : {
+                "type" : "string",
+                "x-java-type" : "java.lang.String"
+              },
+              "matcher" : {
+                "anyOf" : [
+                  {
+                    "$ref" : "#/components/schemas/dev.hilla.crud.filter.PropertyStringFilter$Matcher"
+                  }
+                ]
+              },
+              "@type" : {
+                "type" : "string",
+                "example" : "propertyString"
+              }
+            }
+          }
+        ]
+      },
+      "com.example.application.data.App" : {
+        "type" : "object",
+        "properties" : {
+          "nombre" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-java-type" : "java.lang.Long"
+          }
+        }
+      },
+      "dev.hilla.mappedtypes.Pageable" : {
+        "type" : "object",
+        "properties" : {
+          "pageNumber" : {
+            "type" : "integer",
+            "format" : "int32",
+            "x-java-type" : "int"
+          },
+          "pageSize" : {
+            "type" : "integer",
+            "format" : "int32",
+            "x-java-type" : "int"
+          },
+          "sort" : {
+            "anyOf" : [
+              {
+                "$ref" : "#/components/schemas/dev.hilla.mappedtypes.Sort"
+              }
+            ]
+          }
+        }
+      },
+      "com.example.application.services.AppService$AppRecord" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.Long"
+          },
+          "nombre" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          }
+        }
+      },
+      "com.example.application.services.CRMService$CompanyRecord" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.Long"
+          },
+          "name" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          }
+        }
+      },
+      "com.example.application.services.CRMService$ContactRecord" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-java-type" : "java.lang.Long"
+          },
+          "firstName" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              },
+              {
+                "attributes" : {
+                  "min" : 1,
+                  "max" : 50
+                },
+                "simpleName" : "Size"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "lastName" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              },
+              {
+                "attributes" : {
+                  "min" : 1,
+                  "max" : 50
+                },
+                "simpleName" : "Size"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "email" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              },
+              {
+                "simpleName" : "Email"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "company" : {
+            "anyOf" : [
+              {
+                "$ref" : "#/components/schemas/com.example.application.services.CRMService$CompanyRecord"
+              }
+            ],
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ]
+          }
+        }
+      },
+      "com.example.application.data.Organismo" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-java-type" : "java.lang.Long",
+            "x-annotations" : [
+              {
+                "name" : "jakarta.persistence.Id"
+              }
+            ]
+          },
+          "nombre" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "domicilio" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "telefono" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "email" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          }
+        }
+      },
+      "com.example.application.services.OrganismoService$OrganismoRecord" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.Long"
+          },
+          "nombre" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "domicilio" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "telefono" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "email" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          }
+        }
+      },
+      "com.example.application.data.Usuario" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-java-type" : "java.lang.Long",
+            "x-annotations" : [
+              {
+                "name" : "jakarta.persistence.Id"
+              }
+            ]
+          },
+          "nombre" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "apellido" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "username" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "password" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "dni" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.Long"
+          },
+          "domicilio" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "telefono" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "email" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "Email"
+              },
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "tipo" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "attributes" : {
+                  "regexp" : "INTERNO|EXTERNO"
+                },
+                "simpleName" : "Pattern"
+              },
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "organismo" : {
+            "anyOf" : [
+              {
+                "$ref" : "#/components/schemas/com.example.application.data.Organismo"
+              }
+            ],
+            "x-annotations" : [
+              {
+                "name" : "jakarta.persistence.ManyToOne"
+              }
+            ]
+          },
+          "apps" : {
+            "type" : "array",
+            "items" : {
+              "anyOf" : [
+                {
+                  "$ref" : "#/components/schemas/com.example.application.data.App"
+                }
+              ]
+            },
+            "x-java-type" : "java.util.Set",
+            "x-annotations" : [
+              {
+                "name" : "jakarta.persistence.ManyToMany"
+              }
+            ]
+          },
+          "rol" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "attributes" : {
+                  "regexp" : "ADMIN|EMPL"
+                },
+                "simpleName" : "Pattern"
+              },
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          }
+        }
+      },
+      "com.example.application.services.UsuarioService$UsuarioRecord" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.Long"
+          },
+          "nombre" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "apellido" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "dni" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-java-type" : "java.lang.Long"
+          },
+          "domicilio" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "email" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "password" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "telefono" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "tipo" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "username" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          },
+          "organismo" : {
+            "anyOf" : [
+              {
+                "$ref" : "#/components/schemas/com.example.application.services.OrganismoService$OrganismoRecord"
+              }
+            ]
+          },
+          "apps" : {
+            "type" : "array",
+            "items" : {
+              "anyOf" : [
+                {
+                  "$ref" : "#/components/schemas/com.example.application.data.App"
+                }
+              ]
+            },
+            "x-java-type" : "java.util.Set"
+          },
+          "rol" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
+          }
+        }
+      },
+      "jakarta.servlet.http.HttpServletResponse" : {
+        "type" : "object",
+        "properties" : {
+          "trailerFields" : {
+            "type" : "object",
+            "x-java-type" : "java.util.function.Supplier"
+          },
+          "status" : {
+            "type" : "integer",
+            "format" : "int32",
+            "x-java-type" : "int"
+          },
+          "headerNames" : {
+            "type" : "array",
+            "nullable" : true,
+            "items" : {
+              "type" : "string",
+              "nullable" : true,
+              "x-java-type" : "java.lang.String"
+            },
+            "x-java-type" : "java.util.Collection"
+          }
+        }
+      },
+      "dev.hilla.crud.filter.PropertyStringFilter$Matcher" : {
+        "type" : "string",
+        "enum" : [
+          "EQUALS",
+          "CONTAINS",
+          "LESS_THAN",
+          "GREATER_THAN"
+        ]
+      },
+      "dev.hilla.mappedtypes.Sort" : {
+        "type" : "object",
+        "properties" : {
+          "orders" : {
+            "type" : "array",
+            "items" : {
+              "nullable" : true,
+              "anyOf" : [
+                {
+                  "$ref" : "#/components/schemas/dev.hilla.mappedtypes.Order"
+                }
+              ]
+            },
+            "x-java-type" : "java.util.List"
+          }
+        }
+      },
+      "dev.hilla.mappedtypes.Order" : {
+        "type" : "object",
+        "properties" : {
+          "direction" : {
+            "anyOf" : [
+              {
+                "$ref" : "#/components/schemas/org.springframework.data.domain.Sort$Direction"
+              }
+            ]
+          },
+          "property" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotBlank"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "ignoreCase" : {
+            "type" : "boolean",
+            "x-java-type" : "boolean"
+          },
+          "nullHandling" : {
+            "nullable" : true,
+            "anyOf" : [
+              {
+                "$ref" : "#/components/schemas/org.springframework.data.domain.Sort$NullHandling"
+              }
+            ]
+          }
+        }
+      },
+      "org.springframework.data.domain.Sort$Direction" : {
+        "type" : "string",
+        "enum" : [
+          "ASC",
+          "DESC"
+        ]
+      },
+      "org.springframework.data.domain.Sort$NullHandling" : {
+        "type" : "string",
+        "enum" : [
+          "NATIVE",
+          "NULLS_FIRST",
+          "NULLS_LAST"
+        ]
+      }
+    }
+  }
+}

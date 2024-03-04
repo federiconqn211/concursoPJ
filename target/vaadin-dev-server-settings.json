@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "C:/Users/feder/Downloads/CRM-EJEMPLO/crm-ejemplo/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Users/feder/Downloads/CRM-EJEMPLO/crm-ejemplo/frontend/generated/jar-resources",
+  "staticOutput": "C:/Users/feder/Downloads/CRM-EJEMPLO/crm-ejemplo/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "C:\\Users\\feder\\Downloads\\CRM-EJEMPLO\\crm-ejemplo\\target\\classes\\META-INF\\VAADIN\\config",
+  "frontendBundleOutput": "C:\\Users\\feder\\Downloads\\CRM-EJEMPLO\\crm-ejemplo\\target\\classes\\META-INF\\VAADIN\\webapp",
+  "devBundleOutput": "C:/Users/feder/Downloads/CRM-EJEMPLO/crm-ejemplo/target/dev-bundle/webapp",
+  "devBundleStatsOutput": "C:/Users/feder/Downloads/CRM-EJEMPLO/crm-ejemplo/target/dev-bundle/config",
+  "jarResourcesFolder": "C:/Users/feder/Downloads/CRM-EJEMPLO/crm-ejemplo/frontend/generated/jar-resources",
+  "themeName": "hilla-crm",
+  "clientServiceWorkerSource": "C:\\Users\\feder\\Downloads\\CRM-EJEMPLO\\crm-ejemplo\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}
